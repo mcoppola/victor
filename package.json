@@ -1,0 +1,24 @@
+{
+  "name": "victor",
+  "author": "Matthew Coppola",
+  "version": "0.0.01",
+  "description": "3D Vector Graphics for Canvas",
+  "scripts": {
+    "build": "webpack",
+    "dev": "npx webpack --config webpack.config.dev.js --watch true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcoppola/victor.git"
+  },
+  "keywords": [
+    "graphics",
+    "canvas",
+    "3D"
+  ],
+  "devDependencies": {
+    "ramda": "^0.26.1",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
