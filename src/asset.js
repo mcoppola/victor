@@ -2,8 +2,9 @@ export default class Asset {
   constructor(props) {
     this.geo = props.geo || []
     this.pos = props.pos || [0, 0, 0]
-    this.scale = props.scale || 10
-    this.style = props.style
+    this.background = props.background || false
+    this.scale = props.scale || 1
+    this.style = props.style || { fill: '#000' }
   }
 
   setModelScale(p) {
@@ -23,5 +24,3 @@ export default class Asset {
     return [x, y]
   }
 }
-
-

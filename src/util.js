@@ -22,8 +22,8 @@ export const setCanvas = id => {
 
 export const captureMouse = element => {
   var mouse = {
-    x: window.outerWidth / 2,
-    y: window.outerHeight / 2
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
   }
 
   element.addEventListener(

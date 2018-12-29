@@ -16,7 +16,7 @@ export default class View {
       y: window.outerHeight / 2
     }
     this.mouse = captureMouse(this.canvas)
-    this.mouseFactor = 0.003
+    this.mouseFactor = 0.001
   }
 
   play() {

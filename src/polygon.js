@@ -7,8 +7,8 @@ export default class Polygon extends Asset {
     // entity
     for (let i = 0; i < this.geo.length; i += 1) {
       // plane
-      this.view.ctx.fillStyle = this.style.fill
-      this.view.ctx.strokeStyle = this.style.stoke
+      this.view.ctx.fillStyle = this.style.fill || null
+      this.view.ctx.strokeStyle = this.style.stroke || null
       this.view.ctx.lineWidth = this.style.lineWidth || 1
       this.view.ctx.beginPath()
       for (let j = 0; j < this.geo[i].length; j += 1) {

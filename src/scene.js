@@ -25,8 +25,12 @@ export default class Scene {
   }
 
   orderAssetsByDepth() {
-    this.assets = this.assets.sort(
-      (a, b) => (!!a.background ? 1 : b.pos[2] - a.pos[2])
-    )
+    this.assets = this.assets
+      .filter(a => a.background)
+      .concat(
+        this.assets
+          .filter(a => !a.background)
+          .sort((a, b) => b.pos[2] - a.pos[2])
+      )
   }
 }
