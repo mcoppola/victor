@@ -6,23 +6,26 @@ export default class View {
     this.ctx = this.canvas.getContext('2d')
     this.width = this.canvas.width
     this.height = this.canvas.height
-    this.depth = (this.width + this.height) / 1.5
+    // this.depth = (this.width + this.height) / 1.5
+    this.depth = 2000
     this.frame = [this.width, this.height, this.depth]
     this.shiftX = 1
     this.shiftY = 1
+    this.mouseLastPos = {
+      x: window.outerWidth / 2,
+      y: window.outerHeight / 2
+    }
     this.mouse = captureMouse(this.canvas)
-    this.mouseFactor = 0.002
+    this.mouseFactor = 0.003
+  }
+
+  play() {
+    this.mouseCheck()
+    this.clear()
   }
 
   clear() {
     this.ctx.clearRect(0, 0, this.width, this.height)
-  }
-
-  // Vanishing Point Perspective convertion
-  pointTo3D(p) {
-    var x = p[0] + p[2] / this.depth * (this.width * this.shiftX / 2 - p[0])
-    var y = p[1] + p[2] / this.depth * (this.height * this.shiftY / 2 - p[1])
-    return [x, y]
   }
 
   // doModelAnimation(point, asset) {
@@ -44,20 +47,6 @@ export default class View {
 
   mouseCheck() {
     if (!this.mouse) return
-    if (!this.mouseLastPos) {
-      this.mouseLastPos = {
-        x: window.outerWidth / 2,
-        y: window.outerHeight / 2
-      }
-      return
-    }
-    if (
-      this.mouse.x == this.mouseLastPos.x &&
-      this.mouse.y == this.mouseLastPos.y
-    ) {
-      return
-    }
-
     if (this.mouse.x > this.mouseLastPos.x) {
       this.shiftX += this.mouseFactor * (this.mouse.x - this.mouseLastPos.x)
     } else if (this.mouse.x < this.mouseLastPos.x) {
@@ -65,9 +54,9 @@ export default class View {
     }
 
     if (this.mouse.y > this.mouseLastPos.y) {
-      this.shiftY += this.mouseFactor * (this.mouse.y - this.mouseLastPos.y)
+      this.shiftY -= this.mouseFactor * (this.mouse.y - this.mouseLastPos.y)
     } else if (this.mouse.y < this.mouseLastPos.y) {
-      this.shiftY -= this.mouseFactor * (this.mouseLastPos.y - this.mouse.y)
+      this.shiftY += this.mouseFactor * (this.mouseLastPos.y - this.mouse.y)
     }
 
     this.mouseLastPos = { x: this.mouse.x, y: this.mouse.y }

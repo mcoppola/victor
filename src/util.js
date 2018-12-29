@@ -21,7 +21,10 @@ export const setCanvas = id => {
 }
 
 export const captureMouse = element => {
-  var mouse = { x: 0, y: 0 }
+  var mouse = {
+    x: window.outerWidth / 2,
+    y: window.outerHeight / 2
+  }
 
   element.addEventListener(
     'mousemove',

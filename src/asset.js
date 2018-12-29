@@ -1,5 +1,3 @@
-import { pipe }
-
 export default class Asset {
   constructor(props) {
     this.geo = props.geo || []
@@ -17,32 +15,13 @@ export default class Asset {
   }
 
   // Vanishing Point Perspective convertion
-  pointTo3D(p, view) {
-    var x = p[0] + p[2] / view.depth * (view.width * view.shiftX / 2 - p[0])
-    var y = p[1] + p[2] / view.depth * (view.height * view.shiftY / 2 - p[1])
+  pointTo3D(p) {
+    let { height: h, width: w, depth: d, shiftX: dX, shiftY: dY } = this.view
+
+    let x = p[0] + p[2] / d * (w * dX / 2 - p[0])
+    let y = p[1] + p[2] / d * (h * dY / 2 - p[1])
     return [x, y]
   }
-
-  draw(view) {
-    // asset
-    for (let i = 0; i < this.geo.length; i += 1) {
-      // entity
-      // plane
-      view.ctx.fillStyle = this.style
-      view.ctx.beginPath()
-      for (let j = 0; j < this.geo[i].length; j += 1) {
-        // point
-        let p = this.moveToScenePos(this.setModelScale(this.geo[i][j]))
-        let [x, y] = this.pointTo3D(p, view)
-
-        if (j === 0) {
-          view.ctx.moveTo(x, y)
-        } else {
-          view.ctx.lineTo(x, y)
-        }
-      }
-      view.ctx.closePath()
-      view.ctx.fill()
-    }
-  }
 }
+
+

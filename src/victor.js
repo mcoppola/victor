@@ -5,19 +5,19 @@ export default class Victor {
   constructor(props) {
     setCanvas(window)
     this.canvas = props.canvas
-    this.scene = props.scene
     this.view = new View({ canvas: this.canvas })
 
+    this.scene = props.scene
+    this.scene.setView(this.view)
     this.init()
   }
 
   init() {
     getAnimationFrame()
-    function drawFrame() {
+    const drawFrame = (_ => {
       window.requestAnimationFrame(drawFrame, canvas)
       this.play()
-    }
-    drawFrame = drawFrame.bind(this)
+    }).bind(this)
     drawFrame()
   }
 
@@ -30,12 +30,10 @@ export default class Victor {
     // this.view.keyCheck()
     // this.envi.scrollCheck();
 
-    // draw all assets in scene
-    this.view.mouseCheck()
-    this.view.clear()
+    this.view.play()
 
     for (let i = 0; i < this.scene.assets.length; i += 1) {
-      this.scene.assets[i].draw(this.view)
+      this.scene.assets[i].draw()
     }
   }
 }
