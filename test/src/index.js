@@ -23,7 +23,7 @@ window.onload = () => {
   let wallStyle = {
     fill: 'rgba(40,40,40, 0.0)',
     stroke: gradient,
-    lineWidth: 8
+    lineWidth: 2
   }
 
   let floor = new Polygon({
@@ -56,26 +56,55 @@ window.onload = () => {
     }
   })
 
-  let box = new Box([10, 10, 5], {
-    pos: [300, 0, 800],
+  let desk = new Box([15, 7, 3], {
+    pos: [w - 800, 0, 1200],
     style: {
-      fill: 'rgba(255,0,0,1)',
-      stroke: 'rgba(0,0,255, 1)',
-      lineWidth: 5
+      fill: 'rgba(255,255,255,0.9)',
+      stroke: 'rgba(255,0,255, 1)',
+      lineWidth: 2
     },
     scale: 50
   })
 
-  let box2 = new Box([5, 2, 1], {
-    pos: [1300, 0, 1200],
+  let cashBase = new Box([5, 2, 1], {
+    pos: [w - 700, 350, 1200],
     style: {
-      fill: 'rgba(255,0,0,1)',
-      stroke: 'rgba(0,0,255, 1)',
-      lineWidth: 5
+      fill: 'rgba(255,220,255,1)',
+      stroke: 'rgba(255,0,255, 1)',
+      lineWidth: 2
     },
     scale: 50
   })
 
-  let scene = new Scene([floor, leftWall, rightWall, ciel, box, box2])
+  let cashTop = new Box([1.5, 0.75, 0.75], {
+    pos: [w - 550, 450, 1200],
+    style: {
+      fill: 'rgba(255,220,255,1)',
+      stroke: 'rgba(255,0,255, 1)',
+      lineWidth: 1
+    },
+    scale: 50
+  })
+
+  let glass = new Box([0.1, 8, 5], {
+    pos: [1, 550, 800],
+    style: {
+      fill: 'rgba(220,220,255,0.5)',
+      stroke: 'rgba(0,0,255, 1)',
+      lineWidth: 2
+    },
+    scale: 50
+  })
+
+  let scene = new Scene([
+    floor,
+    leftWall,
+    rightWall,
+    ciel,
+    desk,
+    cashBase,
+    cashTop,
+    glass
+  ])
   let v = new Victor({ canvas, scene })
 }
