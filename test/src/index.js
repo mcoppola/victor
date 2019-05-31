@@ -12,10 +12,12 @@ window.onload = () => {
   let wd = x => w / 1000 * x
   let hd = x => h / 1000 * x
 
-  let gradient = ctx.createLinearGradient(0, 0, 1000, 1000)
-  gradient.addColorStop('0', 'magenta')
-  gradient.addColorStop('0.5', 'blue')
-  gradient.addColorStop('1.0', 'red')
+  let gradient = ctx.createLinearGradient(0, 0, w, h)
+  gradient.addColorStop('0', 'MAGENTA')
+  gradient.addColorStop('0.3', 'MAGENTA')
+  gradient.addColorStop('0.5', '#212AFF')
+  gradient.addColorStop('0.7', '#FF1414')
+  gradient.addColorStop('1.0', '#FF1414')
 
   // canvas.style.background = 'rgb(116, 154, 166)'
   canvas.style.background = gradient
@@ -31,42 +33,42 @@ window.onload = () => {
   let squareSizeH = h/cx
   let squares = []
 
-  // bottom
-  for (var i = 0; i < cx; i++) {
-    for (var j = 0; j < cx; j++) {
-      squares.push(
-        new Square([squareSizeW, 0, squareSizeW], {
-          pos: [(squareSizeW * j), 0, squareSizeW * i],
-          style: {
-            fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : "rgba(255, 255, 255, 0)"
-          }
-        })
-      )
-    }
-  }
+  // // bottom
+  // for (var i = 0; i < cx; i++) {
+  //   for (var j = 0; j < cx; j++) {
+  //     squares.push(
+  //       new Square([squareSizeW, 0, squareSizeW], {
+  //         pos: [(squareSizeW * j), 0, squareSizeW * i],
+  //         style: {
+  //           fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
+  //         }
+  //       })
+  //     )
+  //   }
+  // }
 
-  // top
-  for (var i = 0; i < cx; i++) {
-    for (var j = 0; j < cx; j++) {
-      squares.push(
-        new Square([squareSizeW, h/2, squareSizeW], {
-          pos: [(squareSizeW * j), h/2, squareSizeW * i],
-          style: {
-            fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : "rgba(255, 255, 255, 0)"
-          }
-        })
-      )
-    }
-  }
+  // // top
+  // for (var i = 0; i < cx; i++) {
+  //   for (var j = 0; j < cx; j++) {
+  //     squares.push(
+  //       new Square([squareSizeW, h/2, squareSizeW], {
+  //         pos: [(squareSizeW * j), h/2, squareSizeW * i],
+  //         style: {
+  //           fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
+  //         }
+  //       })
+  //     )
+  //   }
+  // }
 
-  // left
-  for (var i = 0; i < cx; i++) {
-    for (var j = 0; j < cx; j++) {
+  // planes
+  for (var i = 0; i < cx*1.5; i++) {
+    for (var j = 0; j < cx; j+=1) {
       squares.push(
         new Square([w, squareSizeH, squareSizeH], {
-          pos: [0, (squareSizeH * j), squareSizeH * i],
+          pos: [0, (squareSizeH * (j - 1)), squareSizeH * i],
           style: {
-            fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : "rgba(255, 255, 255, 0)"
+            fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
           }
         })
       )
