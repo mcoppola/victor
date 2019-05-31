@@ -1,5 +1,19 @@
 import Polygon from './polygon'
 
+export class Square extends Polygon {
+  constructor(p, props) {
+    let [x, y, z] = p
+
+    super({
+      geo: [
+        [[0, y, 0], [0, y, z], p, [x, y, 0]]
+      ],
+      ...props
+    })
+  }
+}
+
+
 export class Box extends Polygon {
   constructor(p2, props) {
     let p1 = [0, 0, 0]
@@ -25,3 +39,4 @@ export class Box extends Polygon {
     })
   }
 }
+

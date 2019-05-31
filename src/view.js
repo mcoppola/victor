@@ -10,7 +10,7 @@ export default class View {
     this.depth = 2000
     this.frame = [this.width, this.height, this.depth]
     this.shiftX = 1
-    this.shiftY = 1
+    this.shiftY = 0.75
     this.mouseLastPos = {
       x: window.outerWidth / 2,
       y: window.outerHeight / 2
