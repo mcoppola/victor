@@ -13,53 +13,17 @@ window.onload = () => {
   let hd = x => h / 1000 * x
 
   let gradient = ctx.createLinearGradient(0, 0, w, h)
-  gradient.addColorStop('0', 'MAGENTA')
-  gradient.addColorStop('0.3', 'MAGENTA')
-  gradient.addColorStop('0.5', '#212AFF')
-  gradient.addColorStop('0.7', '#FF1414')
-  gradient.addColorStop('1.0', '#FF1414')
+  gradient.addColorStop('0', '#047247')
+  gradient.addColorStop('0.5', '#ef918d')
+  gradient.addColorStop('0.7', '#cac054')
+  gradient.addColorStop('1.0', '#047247')
 
-  // canvas.style.background = 'rgb(116, 154, 166)'
   canvas.style.background = gradient
 
-
-  let wallFill = ctx.createLinearGradient(0, 0, w / 2, h / 2)
-  wallFill.addColorStop('0', 'rgba(80,80,80, 0.1)')
-  wallFill.addColorStop('0.1', 'rgba(0,0,0, 1)')
-  wallFill.addColorStop('1', 'rgba(80,80,80, 0.1)')
-
-  let cx = 15
+  let cx = 20
   let squareSizeW = w/cx
   let squareSizeH = h/cx
   let squares = []
-
-  // // bottom
-  // for (var i = 0; i < cx; i++) {
-  //   for (var j = 0; j < cx; j++) {
-  //     squares.push(
-  //       new Square([squareSizeW, 0, squareSizeW], {
-  //         pos: [(squareSizeW * j), 0, squareSizeW * i],
-  //         style: {
-  //           fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
-  //         }
-  //       })
-  //     )
-  //   }
-  // }
-
-  // // top
-  // for (var i = 0; i < cx; i++) {
-  //   for (var j = 0; j < cx; j++) {
-  //     squares.push(
-  //       new Square([squareSizeW, h/2, squareSizeW], {
-  //         pos: [(squareSizeW * j), h/2, squareSizeW * i],
-  //         style: {
-  //           fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
-  //         }
-  //       })
-  //     )
-  //   }
-  // }
 
   // planes
   for (var i = 0; i < cx*1.5; i++) {
@@ -68,33 +32,18 @@ window.onload = () => {
         new Square([w, squareSizeH, squareSizeH], {
           pos: [0, (squareSizeH * (j - 1)), squareSizeH * i],
           style: {
-            fill: (j + (1 * (i % 2))) % 2 ? "#212AFF" : gradient
+            fill: (j + (1 * (i % 2))) % 2 ? "#270809" : gradient
           }
         })
       )
     }
   }
 
-  //  // right
-  // for (var i = 0; i < cx; i++) {
-  //   for (var j = 0; j < cx; j++) {
-  //     squares.push(
-  //       new Square([w - 100, squareSizeH, squareSizeH], {
-  //         pos: [w - 100, (squareSizeH * j), squareSizeH * i],
-  //         style: {
-  //           fill: (j + (1 * (i % 2))) % 2 ? "rgb(0,0,0)" : "rgba(255, 255, 255, 0)"
-  //         }
-  //       })
-  //     )
-  //   }
-  // }
-
   let sn = 13
   let sh = h / 2
   let spos = [w/2, 10, 800]
   let sw = (w - spos[0]) / sn
   let sd = 100
-
 
   let scene = new Scene(squares)
   let v = new Victor({ canvas, scene })

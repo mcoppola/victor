@@ -6,8 +6,8 @@ export default class View {
     this.ctx = this.canvas.getContext('2d')
     this.width = this.canvas.width
     this.height = this.canvas.height
-    // this.depth = (this.width + this.height) / 1.5
-    this.depth = 2000
+    this.depth = (this.width + this.height) / 1.5
+    // this.depth = 2000
     this.frame = [this.width, this.height, this.depth]
     this.shiftX = 1
     this.shiftY = 0.75
@@ -27,23 +27,6 @@ export default class View {
   clear() {
     this.ctx.clearRect(0, 0, this.width, this.height)
   }
-
-  // doModelAnimation(point, asset) {
-  //   for (var i = 0; i < asset.modelAttributes.length; i += 1) {
-  //     point = asset.modelAttributes[i].processPoint(this.frame, point, asset)
-  //   }
-  //   return point
-  // }
-
-  // charToSize(z) {
-  //   if (z < this.depth) {
-  //     var fontSize = this.fontMax * ((this.depth - z) / this.depth)
-  //     var fontString = Math.round(fontSize).toString() + 'px '
-  //     return [this.fontStyle + fontString + this.font]
-  //   } else {
-  //     return [this.fontStyle + '0px' + this.font]
-  //   }
-  // }
 
   mouseCheck() {
     if (!this.mouse) return
